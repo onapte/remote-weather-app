@@ -1,0 +1,66 @@
+{% extends 'app/layout.html' %}
+{% load static %}
+
+{% block childBody %}
+    <link rel="stylesheet" href="{% static 'app/profile.css' %}">
+    <script src="{% static 'app/profile.js' %}"></script>
+    <div class="user-details">
+        <div class="user-detail-image">
+            <img src="https://www.energy.gov/sites/default/files/styles/full_article_width/public/tesla_portrait_0.jpeg?itok=GnME4zta">
+        </div>
+        <div class="user-detail-field">
+            <div class="key">First Name: </div>
+            <div class="value" id="v1">{{ user.first_name }}</div>
+        </div>
+        <div class="user-detail-field">
+            <div class="key">Last Name: </div>
+            <div class="value" id="v2">{{ user.last_name }}</div>
+        </div>
+        <div class="user-detail-field">
+            <div class="key">Username: </div>
+            <div class="value" id="v3">{{ user.username }}</div>
+        </div>
+        <div class="user-detail-field">
+            <div class="key">Date Joined: </div>
+            <div class="value">{{ user.date_joined }} UTC</div>
+        </div>
+        <div class="user-detail-field">
+            <div class="key">Status: </div>
+            {% if user.isOnline %}
+                <div class="value" style="color: lime;">Online</div>
+            {% else %}
+            <div class="value" style="color: red;">Offline</div>
+            {% endif %}
+        </div>
+        <div class="user-detail-field">
+            <div class="key">Last login: </div>
+            <div class="value">{{ user.last_login }} UTC</div>
+        </div>
+    </div>
+    {% if request.user.is_authenticated and request.user == user %}
+    <div class="button-section">
+        <ul class="button-section-list">
+            <li>
+                <button class="profile-buttons"><a href="{% url 'logout' %}">Logout</a></button>
+            </li>
+            <li>
+                <button class="profile-buttons" id="edit-button">Edit</button>
+            </li>
+            <li>
+                <button class="profile-buttons" id="save-button">Save</button>
+            </li>
+        </ul>
+        <!-- <button class="profile-buttons"><a href="{% url 'logout' %}">Logout</a></button>
+        <button class="profile-buttons" id="edit-button">Edit</button>
+        <button class="profile-buttons" id="save-button">Save</button> -->
+    </div>
+
+    <form id="hidden-edit-form" method="POST" action="{% url 'edit' user.id %}">
+        {% csrf_token %}
+        <input type="text" name="first-name" id="fn">
+        <input type="text" name="last-name" id="ln">
+        <input type="text" name="username" id="un">
+        <input type="text" value="{{ user.id }}" id="user-id">
+    </form>
+    {% endif %}
+{% endblock %}

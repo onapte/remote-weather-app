@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+.all-tools {
+    margin: 0 auto;
+    width: 85%;
+    text-align: center;
+}
+
+.all-tools > ul {
+    list-style-type: none;
+}
+
+.all-tools > ul > li {
+    font-family: Muli;
+    margin: 10px;
+    font-size: 25px;
+    border: 1px solid black;
+}
+
+.all-tools > ul > li:hover {
+    background-color:  lightskyblue;
+}
+
+.satellite-images {
+    display: none;
+    font-size: 22px;
+    font-family: Muli;
+    margin-top: 25px;
+    margin: 0 auto;
+    width: 85%;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.button-section {
+    display: none;
+}
+
+.satellite-image {
+    max-width: 85%;
+    margin: 20px;
+    
+}
+
+.radars {
+    display: none;
+    margin: 0 auto;
+    width: 85%;
+    text-align: center;
+}
+
+.radars > ul {
+    list-style-type: none;
+}
+
+.radars ul li {
+    float: left;
+}
+
+.radars > ul > li {
+    padding: 10px;
+}
+
+.radar-buttons {
+    font-family: Muli;
+    font-size: 22px;
+    background-color: pink;
+}
+
+.radar-buttons:hover {
+    background-color: rgb(255, 145, 163);
+}
+
+.radar-img {
+    max-width: 85%;
+}
+
+.radar-info {
+    display: none;
+    margin-bottom: 75px;
+}
+
+.metar-code-decode, .lat-and-long {
+    display: none;
+    margin: 0 auto;
+    width: 85%;
+    background-color: rgb(247, 247, 247);
+    text-align: center;
+    padding: 10px;
+    font-size: 22px;
+    font-family: Muli;
+}
+
+#metar-value, #lat-long-city {
+    width: 75%;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+#metar-button, #lat-long-submit {
+    font-size: 22px;
+    background-color: cadetblue;
+}
+
+@media screen and (max-width: 800px) {
+    .satellite-images {
+        width: 100%;
+    }
+
+    .satellite-image {
+        max-width: 90%;
+        margin: none;
+    }
+
+    .radars {
+        width: 100%;
+        padding: 2px;
+    }
+
+    .radar-info {
+        width: 95%;
+    }
+
+    #metar-value, #lat-long-city {
+        width: 90%;
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+}

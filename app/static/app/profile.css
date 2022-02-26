@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Inter&display=swap');
+
+.user-details {
+    margin: 0 auto;
+    width: 75%;
+    background-color:  rgb(247, 247, 247);
+    font-family: Muli;
+    margin-top: 40px;
+    padding: 10px;
+    font-size: 24px;
+}
+
+.user-detail-field {
+    display: flex;
+    
+}
+
+.key {
+    
+    font-weight: bold;
+    text-align: center;
+    flex: 5;
+}
+
+.value {
+    flex: 5;
+}
+
+.button-section {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 69px;
+    background-color: red;
+}
+
+.button-section-list {
+    list-style-type: none;
+}
+
+.profile-buttons {
+    background-color: ghostwhite;
+    font-family: Muli;
+    padding: 5px;
+    font-size: 18px;
+}
+
+.user-detail-image {
+    text-align: center;
+}
+
+.user-detail-image > img {
+    max-width: 40%;
+    border-radius: 50%;
+}
+
+#hidden-edit-form {
+    display: none;
+}

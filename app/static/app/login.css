@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Inter&display=swap');
+
+h1 {
+    font-family: muli;
+    position: relative;
+    top: 80px;
+}
+
+.login-content {
+    margin: 0 auto;
+    text-align: center;
+    background-color: rgb(250, 235, 235);
+    width: 50%;
+    position: relative;
+    top: 130px;
+    height: 280px;
+    padding-top: 50px;
+    font-family: inter;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+}
+
+input:focus {
+    outline: none;
+    border: solid 2px lightskyblue;
+}
+
+.input-text-field {
+    padding: 20px;
+    margin: 5px;
+}
+
+label {
+    font-family: 'Inter';
+    font-size: 20px;
+}
+
+.login-input {
+    font-family: 'Muli';
+    font-size: 20px;
+    width: 50%;
+}
+
+.login-button {
+    width: 80px;
+    background-color: rgb(176, 176, 240);
+    
+    font-size: 20px;
+    border: none;
+}
+
+.login-button:hover {
+    background-color: rgb(158, 158, 241);
+}
+
+#sign-up-link {
+    text-decoration: underline;
+    color: green;
+}
+
+.weather-facts {
+    position: absolute;
+    right: 0;
+    top: 120px;
+    width: 300px;
+    padding: 15px;
+    word-wrap: break-word;
+    background-color: beige;
+    text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+    .login-content {
+        width: 90%;
+    }
+}

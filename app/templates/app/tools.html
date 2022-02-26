@@ -1,0 +1,113 @@
+{% extends 'app/layout.html' %}
+{% load static %}
+
+{% block childBody %}
+    <link rel="stylesheet" href="{% static 'app/tools.css' %}">
+    <script src="{% static 'app/tools.js' %}"></script>
+    <div class="all-tools">
+        <ul>
+            <li id="met">METAR decoder</li>
+            <li id="sat">Satellite Images of India</li>
+            <li id="rad">Radar of India</li>
+            <li id="long-lat">Lat and Long Generator</li>
+        </ul>
+    </div>
+    
+    <div class="button-section">
+        <button id="back">Back</button>
+    </div>
+
+    <div class="metar-code-decode">
+        <form method="POST" action="{% url 'tools' %}" id="metar-form">
+            {% csrf_token %}
+            <input type="text" placeholder="Enter METAR: " id="metar-value"> <br>
+            <input type="submit" id="metar-button" name="metar-button">
+        </form>
+        <div class="decodedValue">
+            Nothing yet!
+        </div>
+    </div>
+
+    <div class="satellite-images">
+        <img src="https://mausam.imd.gov.in/Satellite/3Dasiasec_ir1.jpg" class="satellite-image">
+        <img src="https://mausam.imd.gov.in/Satellite/3Dasiasec_wv.jpg" class="satellite-image">
+    </div>
+
+    <div class="radars">
+        <ul>
+            <li><button class="radar-buttons">Mumbai</button></li>
+            <li><button class="radar-buttons">Kochi</button></li>
+            <li><button class="radar-buttons">Agartala</button></li>
+            <li><button class="radar-buttons">Delhi</button></li>
+            <li><button class="radar-buttons">Vizag</button></li>
+            <li><button class="radar-buttons">Srinagar</button></li>
+            <li><button class="radar-buttons">Jaipur</button></li>
+            <li><button class="radar-buttons">Mohanbari</button></li>
+            <li><button class="radar-buttons">Jammu</button></li>
+            <li><button class="radar-buttons">Kufri</button></li>
+            <li><button class="radar-buttons">Patiala</button></li>
+            <li><button class="radar-buttons">Mukteshwar</button></li>
+            <li><button class="radar-buttons">Lucknow</button></li>
+            <li><button class="radar-buttons">Karaikal</button></li>
+            <li><button class="radar-buttons">Sriharikota</button></li>
+
+            <div class="radar-info" id="radar-Mumbai">
+                <img src="https://mausam.imd.gov.in/Radar/ppi_mum.gif" class="radar-img">
+            </div>
+            <div class="radar-info" id="radar-Kochi">
+                <img src="https://mausam.imd.gov.in/Radar/animation/Converted/KOC_MAXZ.gif" class="radar-img">
+            </div>
+            <div class="radar-info" id="radar-Agartala">
+                <img src="https://mausam.imd.gov.in/Radar/animation/Converted/AGT_MAXZ.gif" class="radar-img">
+            </div>
+            <div class="radar-info" id="radar-Delhi">
+                <img src="https://mausam.imd.gov.in/Radar/caz_dli.gif" class="radar-img">
+            </div>
+            <div class="radar-info" id="radar-Vizag">
+                <img src="https://mausam.imd.gov.in/Radar/animation/Converted/VSK_MAXZ.gif" class="radar-img">
+            </div>
+            <div class="radar-info" id="radar-Srinagar">
+                <img src="https://mausam.imd.gov.in/Radar/animation/Converted/SRN_MAXZ.gif" class="radar-img">
+            </div>
+            <div class="radar-info" id="radar-Jaipur">
+                <img src="https://mausam.imd.gov.in/Radar/caz_jpr.gif" class="radar-img">
+            </div>
+            <div class="radar-info" id="radar-Mohanbari">
+                <img src="https://mausam.imd.gov.in/Radar/animation/Converted/MBR_MAXZ.gif" class="radar-img">
+            </div>
+            <div class="radar-info" id="radar-Jammu">
+                <img src="https://mausam.imd.gov.in/Radar/caz_jmu.gif" class="radar-img">
+            </div>
+            <div class="radar-info" id="radar-Kufri">
+                <img src="https://mausam.imd.gov.in/Radar/caz_kuf.gif" class="radar-img">
+            </div>
+            <div class="radar-info" id="radar-Patiala">
+                <img src="https://mausam.imd.gov.in/Radar/caz_ptl.gif" class="radar-img">
+            </div>
+            <div class="radar-info" id="radar-Mukteshwar">
+                <img src="https://mausam.imd.gov.in/Radar/caz_mks.gif" class="radar-img">
+            </div>
+            <div class="radar-info" id="radar-Lucknow">
+                <img src="https://mausam.imd.gov.in/Radar/caz_lkn.gif" class="radar-img">
+            </div>
+            <div class="radar-info" id="radar-Karaikal">
+                <img src="https://mausam.imd.gov.in/Radar/caz_kkl.gif" class="radar-img">
+            </div>
+            <div class="radar-info" id="radar-Sriharikota">
+                <img src="https://mausam.imd.gov.in/Radar/caz_shr.gif" class="radar-img">
+            </div>
+
+        </ul>
+    </div>
+
+    <div class="lat-and-long">
+        <form method="POST" action="{% url 'tools' %}">
+            {% csrf_token %}
+            <input type="text" placeholder="Enter City name: " id="lat-long-city"> <br>
+            <input type="submit" id="lat-long-submit" name="lat-long-submit">
+        </form>
+        <div class="lat-long-value">
+            Please enter a city!
+        </div>
+    </div>
+{% endblock %}

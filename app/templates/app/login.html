@@ -1,0 +1,33 @@
+{% extends 'app/layout.html' %}
+{% load static %}
+
+{% block childBody %}
+<link rel="stylesheet" href="{% static 'app/login.css' %}">
+
+<script src="{% static 'app/login.js' %}"></script>
+<h1><center>Welcome Back!</center></h1>
+
+<div class="login-content">
+    <form method="POST" action="{% url 'login' %}" class="login-form">
+        {% csrf_token %}
+    <div class="input-text-field">
+        <label>Username</label>&nbsp;
+        <input type="text" class="login-input" placeholder="Enter username" checked name="username">
+    </div>
+    <div class="input-text-field">
+        <label>Password&nbsp;</label>&nbsp;
+        <input type="password" class="login-input" placeholder="Enter password" checked name="password">
+    </div>
+    <div class="input-text-field">
+        <button class="login-button">Sign In</button>
+    </div>
+    First time? <a href="#" id="sign-up-link">Sign up</a> here
+    </form>
+</div>
+
+<div class="weather-facts">
+    <h2>Fact of the day 🐧</h2>
+    <q>You can tell the temperature by counting a cricket's chirps!</q>
+</div>
+
+{% endblock %}

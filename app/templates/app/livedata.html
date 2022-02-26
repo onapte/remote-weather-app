@@ -1,0 +1,49 @@
+{% extends 'app/layout.html' %}
+{% load static %}
+
+{% block childBody %}
+    <link rel="stylesheet" href="{% static 'app/livedata.css' %}">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+
+    <script src="{% static 'app/livedata.js' %}"></script>
+    <button id="bt">Click me</button>
+    <h1 id="heading1">0</h1>
+    <form action="{% url 'livedata' %}" method="POST" id="req-form">
+        {% csrf_token %}
+        <input type="text" name="city-inp">
+        <input type="submit">
+    </form>
+
+    <div class="weather-table">
+        <table class="metar-table">
+            <tr>
+                <th style="width:10%">City</th>
+                <th style="width:10%">Station Code</th>
+                <th style="width:10%">Time</th>
+                <th style="width:10%">Temperature</th>
+                <th style="width:10%">Dew Point</th>
+                <th style="width:10%">Wind Speed</th>
+                <th style="width:10%">Visibility</th>
+                <th style="width:10%">Pressure</th>
+                <th style="width:10%">Weather</th>
+                <th style="width:10%">Sky</th>
+
+            </tr>
+
+            {% for data in weatherData %}
+            <tr>
+                <td>{{ data.city }}</td>
+                <td>{{ data.stationCode }}</td>
+                <td>{{ data.reportTime }}</td>
+                <td>{{ data.temperature }}</td>
+                <td>{{ data.dewPoint }}</td>
+                <td>{{ data.windSpeed }}</td>
+                <td>{{ data.visibility }}</td>
+                <td>{{ data.pressure }}</td>
+                <td>{{ data.weather }}</td>
+                <td>{{ data.sky }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

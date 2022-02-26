@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Inter&display=swap');
+
+.metar-table, th, td {
+  border: 1px solid black;
+  text-align: center;
+}
+
+
+.weather-table {
+  margin: 20px;
+  font-family: Inter;
+  margin-bottom: 70px;
+  
+}

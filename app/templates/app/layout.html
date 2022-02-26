@@ -1,0 +1,80 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'app/layout.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="{% static 'app/layout.js' %}"></script>
+
+
+    <title>Home</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbar-part1">
+            <span class="logo-1">HAWA-</span><span class="logo-2">ON</span>
+        </div>
+        <div class="navbar-part2">
+            <ul class="navbar-items">
+                <li class="navbar-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="navbar-item"><a href="{% url 'docs' 'about-content-1.md' %}">Docs</a></li>
+                {% if request.user.is_authenticated %}
+                <li class="navbar-item"><a href="{% url 'logout' %}">Sign Out</a></li>
+                <li class="navbar-item" style="position: absolute; right: 0;"><a href="{% url 'profile' request.user.id %}"><i style="font-size:22px" class="fa fa-user-circle"></i> {{ request.user.username }}</a></li>
+                {% else %}
+                <li class="navbar-item"><a href="{% url 'login' %}">Sign In</a></li>
+                {% endif %}
+                <li class="navbar-item"><a href="{% url 'livedata' %}" id="data-link">Live data</a></li>
+                <li class="navbar-item"><a href="{% url 'mapview' %}" class="mapview-link">Map View</a></li>
+                <li class="navbar-item"><a href="{% url 'tools' %}">Tools</a></li>
+            </ul>
+        </div>
+        <div class="navbar-part3">
+            <button id="toggleButton"><i class="fa fa-bars"></i></button>
+        </div>
+    </div>
+
+
+    <div class="toggled-navbar-contents">
+        <ul class="toggled-list">
+            <li class="toggled-list-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="toggled-list-item"><a>About</a></li>
+            <li class="toggled-list-item"><a>Pricing</a></li>
+            <li class="toggled-list-item"><a href="{% url 'docs' 'about-content-1.md' %}">Docs</a></li>
+            {% if request.user.is_authenticated %}
+            <li class="toggled-list-item"><a href="{% url 'logout' %}">Sign Out</a></li>
+            {% else %}
+            <li class="toggled-list-item"><a href="{% url 'login' %}">Sign In</a></li>
+            {% endif %}
+            <li class="toggled-list-item"><a href="{% url 'livedata' %}">Live data</a></li>
+            <li class="toggled-list-item"><a href="{% url 'mapview' %}" class="mapview-link">Map View</a></li>
+        </ul>
+    </div>
+
+    <div class="fa-3x">
+        <i class="fas fa-sync fa-spin" style="font-size: 70px;"></i> <br>
+    </div>
+
+    <div class="content">
+        {% block childBody %}
+
+        {% endblock %}
+    </div>
+
+
+    <div class="footer">
+        © 2022 HAWA-ON <br>
+        Number of visits:
+        <font id="visits">{{ unique_visits }}</font>
+    </div>
+
+</body>
+
+</html>

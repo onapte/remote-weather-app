@@ -1,0 +1,29 @@
+{% extends 'app\layout.html' %}
+{% load static %}
+
+{% block childBody %}
+    <link rel="stylesheet" href="{% static 'app/docs.css' %}">
+    
+    <script src="{% static 'app/layout.js' %}"></script>
+    <script src="{% static 'app/docs.js' %}"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/vs2015.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js" integrity="sha512-IaaKO80nPNs5j+VLxd42eK/7sYuXQmr+fyywCNA0e+C6gtQnuCXNtORe9xR4LqGPz5U9VpH+ff41wKs/ZmC3iA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>hljs.highlightAll();</script>    
+    <div id="about-page-data">
+        <div id="sidebar">
+            <ul id="sidebar-list">
+                <a href="{% url 'docs' 'about-content-1.md' %}"><li class="sidebar-list-item">Introduction</li></a>
+                <a href="{% url 'docs' 'about-content-2.md' %}"><li class="sidebar-list-item">Introduction</li></a>
+            </ul>
+        </div>
+        <div class="about-content">
+            <button class="small-screen-list-button"><i class="fa fa-list"></i></button>
+            {{ content|safe }}
+        </div>
+        
+    </div>
+    
+
+
+{% endblock %}

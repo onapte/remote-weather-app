@@ -1,0 +1,23 @@
+#map {
+    text-align: center;
+    margin-left: 10%;
+    margin-top: 30px;
+}
+
+#map-key {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+#map-key-table, th, td {
+    border: 1px solid black;
+    text-align: center;
+    padding: 5px;
+}
+
+@media screen and (max-width: 800px) {
+    iframe {
+        width: 95%;
+        overflow: visible;
+    }
+}
