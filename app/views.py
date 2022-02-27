@@ -1,28 +1,19 @@
-
-from os import remove
 from sqlite3 import IntegrityError
 from django.shortcuts import render
 from django.contrib.auth import login, logout, authenticate
 from markdown2 import markdown
 import markdown2
 import urllib.request
-from .utils import get_client_ip, get_plot, getData, organizeDecodedData, storeVisitorInfo, strip_tags, plotPoint, highlightCountry
+from .utils import get_client_ip, get_plot, getData, organizeDecodedData, storeVisitorInfo, strip_tags, plotPoint
 from metar import Metar
 import os
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.basemap import Basemap
-import io, folium
-import base64
+import folium
 import urllib
 from geopy.geocoders import Nominatim
 import itertools
-from django.views.generic.base import TemplateView
 from .models import cityWeatherRequest, weatherData, User
 from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
-from staticmap import StaticMap
-from django.dispatch import receiver
 import json
 from metar import Metar
 
@@ -409,12 +400,8 @@ def mapView(request):
         if point is None:
             coords.append([-1,-1])
     point = geolocator.geocode("New Delhi")
-    lat = point.latitude
-    long = point.longitude
     plotPoint(coords, m, visibility, city)
-    #highlightCountry("India", m)
     m = m._repr_html_()
-    sm = StaticMap(400, 400, url_template='https://www.openstreetmap.org/#map=5/22.438/77.335')
     
     return render(request, 'app/mapview.html', {
         'm': m,
