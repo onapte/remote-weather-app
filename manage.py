@@ -2,6 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+sys.path.append('./mysite-virtualenv/lib/python3.5/site-packages')
 
 
 def main():
