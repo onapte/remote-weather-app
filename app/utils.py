@@ -1,14 +1,8 @@
 from html.parser import HTMLParser
 from io import StringIO
-from lib2to3.pgen2.parse import ParseError
 from metar import Metar
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-from matplotlib.axis import Axis
 import base64
 from io import BytesIO
-from mpl_toolkits.basemap import Basemap
 import folium, json
 from .models import Visitor, User
 
@@ -70,45 +64,45 @@ def plotPoint(coords, pointMap, visibility, city):
             color=markerColor,
         ).add_child(folium.Popup(ci)).add_to(pointMap)
 
-def highlightCountry(country, countryMap):
-    with open('A:/Django Projects/weather project/weather/app/countries.geojson') as handle:
-     country_geo = json.loads(handle.read())
+# def highlightCountry(country, countryMap):
+#     with open('A:/Django Projects/weather project/weather/app/countries.geojson') as handle:
+#      country_geo = json.loads(handle.read())
 
-    for i in country_geo['features']:
-        if i['properties']['ADMIN'] == 'India':
-            country = i
-            break
+#     for i in country_geo['features']:
+#         if i['properties']['ADMIN'] == 'India':
+#             country = i
+#             break
 
 
-    folium.GeoJson(country,
-                name='india').add_to(countryMap)
+    # folium.GeoJson(country,
+    #             name='india').add_to(countryMap)
 
-    folium.LayerControl().add_to(countryMap)
+    # folium.LayerControl().add_to(countryMap)
 
-def get_graph():
-    buffer = BytesIO()
-    plt.savefig(buffer, format="png")
-    buffer.seek(0)
-    image_png = buffer.getvalue()
-    graph = base64.b64encode(image_png)
-    graph = graph.decode('utf-8')
-    buffer.close()
-    return graph
+# def get_graph():
+#     buffer = BytesIO()
+#     plt.savefig(buffer, format="png")
+#     buffer.seek(0)
+#     image_png = buffer.getvalue()
+#     graph = base64.b64encode(image_png)
+#     graph = graph.decode('utf-8')
+#     buffer.close()
+#     return graph
 
-def get_plot():
-    fig = plt.figure(figsize=(10, 10))
-    m = Basemap(projection='lcc', resolution=None,
-            width=8E6, height=8E6, 
-            lat_0=23.117686823036014, lon_0=80.00322021440945,)
-    #m.etopo(scale=0.5, alpha=0.5)
-    m.bluemarble()
+# def get_plot():
+#     fig = plt.figure(figsize=(10, 10))
+#     m = Basemap(projection='lcc', resolution=None,
+#             width=8E6, height=8E6, 
+#             lat_0=23.117686823036014, lon_0=80.00322021440945,)
+#     #m.etopo(scale=0.5, alpha=0.5)
+#     m.bluemarble()
 
-    # Map (long, lat) to (x, y) for plotting
-    x, y = m(77.20861811045259, 28.617638361345335)
-    plt.plot(x, y, 'ok', markersize=5, color="red")
-    plt.text(x, y, ' New Delhi', fontsize=12, color="yellow");
-    graph = get_graph
-    return graph
+#     # Map (long, lat) to (x, y) for plotting
+#     x, y = m(77.20861811045259, 28.617638361345335)
+#     plt.plot(x, y, 'ok', markersize=5, color="red")
+#     plt.text(x, y, ' New Delhi', fontsize=12, color="yellow");
+#     graph = get_graph
+#     return graph
 
 def getData(usefulData):
     metarData = {}
@@ -208,6 +202,3 @@ def organizeDecodedData(metarData):
             continue
         
     return orgData
-
-def correctMetarCode(metarCode):
-    pass
