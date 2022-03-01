@@ -4,7 +4,7 @@ from django.contrib.auth import login, logout, authenticate
 from markdown2 import markdown
 import markdown2
 import urllib.request
-from .utils import get_client_ip, get_plot, getData, organizeDecodedData, storeVisitorInfo, strip_tags, plotPoint
+from .utils import get_client_ip, getData, organizeDecodedData, storeVisitorInfo, strip_tags, plotPoint
 from metar import Metar
 import os
 import folium
