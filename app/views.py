@@ -83,7 +83,7 @@ def editPageView(request, userId):
 def docsPageView(request, contentFile):
     storeVisitorInfo(request)
     #md = open(os.getcwd(), 'r')
-    md = open(f"{os.getcwd()}/app/content/docs/{contentFile}", 'r')
+    md = open(f"{os.getcwd()}/hava-on/app/content/docs/{contentFile}", 'r')
     content = markdown2.markdown(md.read())
 
     #ohb = organizeDecodedData(metarData)
