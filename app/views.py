@@ -100,7 +100,7 @@ def loginPageView(request):
 def liveDataPageView(request):
     storeVisitorInfo(request)
     #url = 'https://amssdelhi.gov.in/Palam4.php'
-    url = 'https://young-waters-99383.herokuapp.com/https://amssdelhi.gov.in/Palam4.php'
+    url = 'https://onapte.github.io/metar-data-file/'
     file = urllib.request.urlopen(url)
     raw_data = file.read().decode('utf-8')
     usefulData = strip_tags(raw_data)
