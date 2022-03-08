@@ -6,13 +6,6 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
 
     <script src="{% static 'app/livedata.js' %}"></script>
-    <button id="bt">Click me</button>
-    <h1 id="heading1">0</h1>
-    <form action="{% url 'livedata' %}" method="POST" id="req-form">
-        {% csrf_token %}
-        <input type="text" name="city-inp">
-        <input type="submit">
-    </form>
 
     <div class="weather-table">
         <table class="metar-table">
