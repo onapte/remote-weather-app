@@ -391,6 +391,7 @@ def mapView(request):
         max_bounds=True,
         tiles="Stamen",
         prefer_canvas=True,
+        attr="<a href=https://endless-sky.github.io/>Endless Sky</a>",
     )
     geolocator = Nominatim(user_agent="this-weather-project")
     coords = []
